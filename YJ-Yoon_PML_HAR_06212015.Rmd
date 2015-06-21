@@ -1,0 +1,66 @@
+---
+title: "Practical Machine Learning - Project HAR"
+author: "Y.J. Yoon"
+date: "June 21, 2015"
+output: html_document
+---
+
+This is my very first R program written for PML class.  I practically just installed the RStudio and R this afternoon, so that I can attempt to go through this assignment in time to catch up and to learn ML while also going through other ML classes online.  I see that this is a latter part of a multi-class Data Scientist certification from Johns Hopkins, but I didn't get to take any of the earlier classes nor do I have any data scientist background education.
+
+I do have some background in other programming languages and I am currently interested in learning about ML from home, hence my attempt to try to learn as much as I can from this class and other classes available online.  Since I am unable to grade other students' submissions without submitting my own first by the deadline and will lose 20% + 20% = 40% of the course grade automatically by NOT submitting anything prior to the deadline, I am going to submit something before the deadline just to get started in using R programming and get used to the RStudio GUI while giving myself the opportunity to review other students' project submissions in order to try to see how others have completed this assignment and to learn on my own without losing all 40% of the grade for the class.  ;-)
+
+I just watched the 14 min long youtube video by "Statistical Learning" class showing an intro RStudio functions, so I was able to read and write the answers necessary for this Course Project.  I am not sure if I will successfully be able to complete this project in time, but I will do my best to work through it until the deadline in about an hour.  ;-)
+
+# This is a function call to take care of the output required for the project.
+```{r}
+pml_write_files = function(x, d){
+    n = length(x)
+    for(i in 1:n){
+        filename = paste0(d, i,".txt")
+        write.table(x[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
+    }
+}
+```
+
+# This is a function call to take care of reading the input (both pml-testing.csv & pml-training.csv) file.
+```{r}
+pml_read_file = function(x){
+    return(read.csv(x))
+}
+```
+
+# This is a code chunk that will read the training input file
+```{r}
+pml_training = pml_read_file("~\\JHU EMBA\\R\\pml-training.csv")
+summary(pml_training)
+```
+
+# This is a code chunk that should actually do some PML magic!
+```{r}
+# do some machine learning here using the training data
+```
+
+# This is a code chunk that reads the testing data
+```{r}
+# read the testing data
+pml_testing = pml_read_file("~\\JHU EMBA\\R\\pml-testing.csv")
+dim(pml_testing)
+names(pml_testing)
+# summary(pml_testing)
+```
+
+# This is a code chunk that should plot the result prior to writing it to output files
+```{r, echo=FALSE}
+# plot(har_testing)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# This is a code chunk that should be writing the result out to 20 different output files
+```{r}
+# this is where I should be iterating through the 20 testing data set and to generate the output files for the project with one of the 5 ("A","B","C","D","E") classification prediction based on the PML algorithm used on this project.
+output_files = rep("A", dim(pml_testing)[1])
+output_dir   = "~\\JHU EMBA\\R\\"
+pml_write_files(output_files, output_dir)
+```
+
